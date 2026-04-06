@@ -8,6 +8,12 @@
 
 多人 monorepo 如果没有统一入口，用户就只能靠翻目录选角色。`all-personas` 解决的是“怎么找到对的人格模块”，而不是“把所有人格胡乱拼在一起”。
 
+## 目录位置
+
+* 总入口保留在 `skills/all-personas/`
+* `renhuang-flag` 角色位于根目录 `sovereign_skills/`
+* 其余角色位于根目录 `soulbanner_skills/`
+
 ## 它蒸馏了什么
 
 * 角色索引

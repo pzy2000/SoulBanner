@@ -76,14 +76,11 @@ Musk      ❯ 먼저 진짜 병목이 뭔지 보세요.
             목표가 타당하다면 비핵심 단계를 지우고 바로 검증을 돌려야 합니다.
 ```
 
-이건 캐릭터에 채팅 스킨만 씌우는 작업이 아닙니다. Ten Thousand Soul Banners.Skill은 각 페르소나의 판단 프레임, 표현 DNA, 서사 리듬이 실제로 분석에 참여하게 만드는 것을 목표로 합니다.
-
----
-
-<a id="install"></a>
-## 설치
-
-### 저장소 전체 설치
+현재 구성:
+- 페르소나 8종
+- 라우터 skill 1개 (`all-personas`)
+- 카테고리 페이지 6개
+- 확장을 위한 템플릿 세트
 
 ```bash
 git clone https://github.com/pzy2000/Ten-thousand-soul-banners.git
@@ -98,58 +95,17 @@ Codex 로컬 skill 디렉터리를 예로 들면:
 cp -R skills/all-personas ~/.codex/skills/all-personas
 ```
 
-설치 후에는 다음처럼 바로 호출할 수 있습니다:
+캐릭터 skill 은 이제 루트의 두 폴더로 나뉩니다. `sovereign_skills/` 는 Power Figures, `soulbanner_skills/` 는 그 외 역할용이며, 라우터 skill 은 계속 `skills/all-personas` 에 있습니다.
 
-```text
-> Ten Thousand Soul Banners의 모든 페르소나를 보여줘
-> 이 문제는 누가 분석하기 가장 좋은가?
-> Changshu Arno 모드로 전환해줘
-> Power Figures 시점으로 이 일을 봐줘
-> Trump와 Musk에게 한마디씩 시켜줘
-```
-
-### 개별 persona skill 설치
-
-```bash
-cp -R skills/tong-jincheng ~/.codex/skills/tong-jincheng
-```
-
-활성화 후에는 바로 이렇게 물을 수 있습니다:
-
-```text
-> 이 관계를 Tong Jincheng 시점에서 봐줘
-> Hanli 모드로 바꾸고 지금 이 위험을 감수해야 할지 분석해줘
-> Changshu Arno 말투로 추상적인 한마디를 해줘
-> Yann LeCun 시점에서 보면 왜 LLM만으로는 아직 부족한가?
-```
-
-`SKILL.md`를 지원하는 다른 클라이언트를 쓰고 있다면 해당 persona 디렉터리를 직접 가져와도 됩니다.
-
----
-
-<a id="what-gets-distilled"></a>
-## 무엇을 증류하는가
-
-Ten Thousand Soul Banners.Skill은 단일 인물 저장소가 아니라 멀티 페르소나 Skill 모노레포입니다. 현재 첫 버전에는 다음이 포함됩니다:
-
-| 모듈 | 내용 |
-|------|------|
-| **총입구** | `all-personas`, 페르소나 목록, 카테고리 탐색, 추천, 전환, 다중 비교를 담당 |
-| **현재 페르소나** | Changshu Arno, Liangzi, Tong Jincheng, Trump, Musk, Yu Dazui, Hanli, Yann LeCun |
-| **카테고리 체계** | `Power Figures (renhuang-flag)`, `abstract-flag`, `jianghu-flag`, `business-flag`, `fiction-flag`, `research-flag` |
-| **연구 구조** | 모든 persona에 `SKILL.md`, `README.md`, `references/research/` 6종 세트가 포함됨 |
-| **확장 메커니즘** | `CONTRIBUTING.md`, PR 템플릿, Issue 템플릿, 템플릿 디렉터리 |
-
-이 저장소가 증류하는 것은 "누가 어떤 명언을 했는가"가 아니라 다음과 같은 층위입니다:
-
-* 안정적인 표현 스타일
-* 핵심 인지 프레임
-* 의사결정 휴리스틱
-* 표현 DNA
-* 캐릭터 긴장감
-* 사용 경계
-
-한 문장으로 말하면, **명언은 그들이 무엇을 말했는지 알려주고, Ten Thousand Soul Banners.Skill은 "그들이 어떻게 판단할지"를 호출 가능하게 만들려 합니다.**
+## 포함된 페르소나
+- 창수 아누오
+- 량쯔
+- 퉁진청
+- 트럼프
+- 머스크
+- 위다쭈이
+- 한리
+- Yann LeCun
 
 ---
 

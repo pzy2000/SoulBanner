@@ -76,14 +76,11 @@ Musk       ❯ まず本当のボトルネックを見てください。
              目標が正しいなら、非本質な工程を削って今すぐ検証を回すべきです。
 ```
 
-これはキャラクターにチャット用のスキンを貼る話ではありません。Ten Thousand Soul Banners.Skill が目指すのは、判断フレーム、表現 DNA、語りのリズムそのものを分析へ参加させることです。
-
----
-
-<a id="install"></a>
-## 導入
-
-### リポジトリ全体を導入する
+現在の構成:
+- 8 ペルソナ
+- 1 つのルーター skill（`all-personas`）
+- 6 つのカテゴリページ
+- 今後の追加に使えるテンプレート
 
 ```bash
 git clone https://github.com/pzy2000/Ten-thousand-soul-banners.git
@@ -98,58 +95,17 @@ Codex のローカル skill ディレクトリを例にすると:
 cp -R skills/all-personas ~/.codex/skills/all-personas
 ```
 
-導入後は、たとえば次のように呼び出せます:
+キャラクター skill は現在、ルート直下の 2 つのフォルダに分割されています。`sovereign_skills/` は Power Figures、`soulbanner_skills/` はそれ以外の役割用です。ルーター skill は引き続き `skills/all-personas` にあります。
 
-```text
-> Ten Thousand Soul Banners の全ペルソナを一覧して
-> この問題に向いているのは誰？
-> Changshu Arno モードに切り替えて
-> Power Figures の視点でこれを見て
-> Trump と Musk に一言ずつ言わせて
-```
-
-### 単体の persona skill を導入する
-
-```bash
-cp -R skills/tong-jincheng ~/.codex/skills/tong-jincheng
-```
-
-有効化後は、直接こう聞けます:
-
-```text
-> この関係を Tong Jincheng の視点で見て
-> Hanli モードに切り替えて、今このリスクを取るべきか分析して
-> Changshu Arno の調子で抽象的な一言を言って
-> Yann LeCun の視点では、なぜ LLM だけではまだ足りないのか
-```
-
-`SKILL.md` を扱える別のクライアントを使っている場合も、対応する persona ディレクトリをそのまま読み込めます。
-
----
-
-<a id="what-gets-distilled"></a>
-## 何を蒸留しているか
-
-Ten Thousand Soul Banners.Skill は単一人物のリポジトリではなく、複数ペルソナの Skill モノレポです。現行の初版には次が含まれます:
-
-| モジュール | 内容 |
-|------|------|
-| **総合入口** | `all-personas`。ペルソナ一覧、カテゴリ閲覧、推薦、切り替え、複数比較を担当 |
-| **現在のペルソナ** | Changshu Arno、Liangzi、Tong Jincheng、Trump、Musk、Yu Dazui、Hanli、Yann LeCun |
-| **カテゴリ体系** | `Power Figures (renhuang-flag)`、`abstract-flag`、`jianghu-flag`、`business-flag`、`fiction-flag`、`research-flag` |
-| **研究構造** | すべての persona に `SKILL.md`、`README.md`、`references/research/` の 6 点セットを配置 |
-| **拡張の仕組み** | `CONTRIBUTING.md`、PR テンプレート、Issue テンプレート、テンプレート用ディレクトリ |
-
-このリポジトリが蒸留しているのは「その人がどんな名言を残したか」ではなく、次のような層です:
-
-* 安定した語り口
-* 中核となる認知フレーム
-* 意思決定のヒューリスティクス
-* 表現 DNA
-* 人物像の張力
-* 使用上の境界
-
-一言でいえば、**名言は過去に何を言ったかを教えますが、Ten Thousand Soul Banners.Skill は「どう判断しそうか」を呼び出せるようにしたいのです。**
+## 収録ペルソナ
+- 常熟アーノ
+- 良子
+- 童錦程
+- トランプ
+- マスク
+- 余大嘴
+- 韓立
+- Yann LeCun
 
 ---
 

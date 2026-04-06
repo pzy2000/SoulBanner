@@ -86,6 +86,12 @@ git clone https://github.com/pzy2000/Ten-thousand-soul-banners.git
 cd Ten-thousand-soul-banners
 ```
 
+角色 skill 现已按两组拆分到仓库根目录：
+
+* `sovereign_skills/`：人皇旗角色（`trump`、`musk`）
+* `soulbanner_skills/`：万魂幡其余角色
+* `skills/all-personas`：总入口 skill
+
 ### 安装总入口 skill
 
 以 Codex 本地技能目录为例：
@@ -107,7 +113,9 @@ cp -R skills/all-personas ~/.codex/skills/all-personas
 ### 安装单人物 skill
 
 ```bash
-cp -R skills/tong-jincheng ~/.codex/skills/tong-jincheng
+cp -R soulbanner_skills/tong-jincheng ~/.codex/skills/tong-jincheng
+# 或
+cp -R sovereign_skills/musk ~/.codex/skills/musk
 ```
 
 激活后就可以直接问：
@@ -131,6 +139,7 @@ cp -R skills/tong-jincheng ~/.codex/skills/tong-jincheng
 |------|------|
 | **总入口** | `all-personas`，负责列人、分类浏览、角色推荐、切换与多角色对照 |
 | **当前角色** | 常熟阿诺、良子、童锦程、特朗普、马斯克、余大嘴、韩立、Yann LeCun |
+| **角色目录** | 根目录拆分为 `sovereign_skills/`（人皇旗）与 `soulbanner_skills/`（万魂幡角色），`skills/all-personas` 保留总入口 |
 | **分类体系** | `人皇旗（Power Figures）`、`abstract-flag`、`jianghu-flag`、`business-flag`、`fiction-flag`、`research-flag` |
 | **研究结构** | 每个角色都有 `SKILL.md`、`README.md` 和 `references/research/` 六件套 |
 | **扩展机制** | `CONTRIBUTING.md`、PR 模板、Issue 模板、模板目录 |
@@ -150,16 +159,16 @@ cp -R skills/tong-jincheng ~/.codex/skills/tong-jincheng
 
 ## 当前角色
 
-| 角色 | 定位 | 分类 |
-|------|------|------|
-| **常熟阿诺** | 抽象、真诚、诺言诺语、伪哲理感 | `abstract-flag` |
-| **良子** | 草根吃播、生猛、强肉身感、强生存感 | `jianghu-flag` |
-| **童锦程** | 深情祖师爷、关系判断、反鸡汤 | `jianghu-flag` |
-| **特朗普** | 强叙事、强对抗、绝对化表达 | `renhuang-flag` |
-| **马斯克** | 第一性原理、工程执念、愿景推进 | `renhuang-flag` |
-| **余大嘴** | 发布会压强、商战感、技术话术 | `business-flag` |
-| **韩立** | 虚构角色，谨慎求生、谋定后动 | `fiction-flag` |
-| **Yann LeCun** | 研究路线、世界模型、自监督学习、反 hype | `research-flag` |
+| 角色 | 定位 | 分类 | 物理目录 |
+|------|------|------|----------|
+| **常熟阿诺** | 抽象、真诚、诺言诺语、伪哲理感 | `abstract-flag` | `soulbanner_skills/changshu-arno` |
+| **良子** | 草根吃播、生猛、强肉身感、强生存感 | `jianghu-flag` | `soulbanner_skills/liangzi` |
+| **童锦程** | 深情祖师爷、关系判断、反鸡汤 | `jianghu-flag` | `soulbanner_skills/tong-jincheng` |
+| **特朗普** | 强叙事、强对抗、绝对化表达 | `renhuang-flag` | `sovereign_skills/trump` |
+| **马斯克** | 第一性原理、工程执念、愿景推进 | `renhuang-flag` | `sovereign_skills/musk` |
+| **余大嘴** | 发布会压强、商战感、技术话术 | `business-flag` | `soulbanner_skills/yu-dazui` |
+| **韩立** | 虚构角色，谨慎求生、谋定后动 | `fiction-flag` | `soulbanner_skills/hanli` |
+| **Yann LeCun** | 研究路线、世界模型、自监督学习、反 hype | `research-flag` | `soulbanner_skills/yann-lecun` |
 
 完整索引见 [PEOPLE.md](PEOPLE.md)。
 
@@ -210,7 +219,7 @@ cp -R skills/tong-jincheng ~/.codex/skills/tong-jincheng
 * [fiction-flag](categories/fiction-flag.md)
 * [research-flag](categories/research-flag.md)
 
-一个角色可以同时被索引进多个分类页，但物理目录只保留一份。
+一个角色可以同时被索引进多个分类页，但物理目录只保留一份，并统一放在根目录的 `sovereign_skills/` 或 `soulbanner_skills/`。
 
 ---
 
@@ -218,7 +227,7 @@ cp -R skills/tong-jincheng ~/.codex/skills/tong-jincheng
 
 本仓库允许使用一切公开材料，但每个人物都必须把素材蒸馏过程尽量透明化。
 
-每个 persona 目录统一包含：
+每个 persona 目录（位于根目录的 `sovereign_skills/` 或 `soulbanner_skills/`）统一包含：
 
 ```text
 <persona>/
@@ -300,12 +309,14 @@ Ten-thousand-soul-banners/
 │   ├── fiction-flag.md
 │   └── research-flag.md
 ├── skills/
-│   ├── all-personas/
+│   └── all-personas/
+├── sovereign_skills/
+│   ├── trump/
+│   └── musk/
+├── soulbanner_skills/
 │   ├── changshu-arno/
 │   ├── liangzi/
 │   ├── tong-jincheng/
-│   ├── trump/
-│   ├── musk/
 │   ├── yu-dazui/
 │   ├── hanli/
 │   └── yann-lecun/

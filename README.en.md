@@ -75,14 +75,11 @@ Musk      ❯ Start by finding the real bottleneck.
             If the goal is valid, delete the non-critical steps and push a test immediately.
 ```
 
-This is not a chat skin pasted onto a character. Ten Thousand Soul Banners.Skill aims to make the persona's reasoning frame, expressive DNA, and narrative rhythm actually participate in analysis.
-
----
-
-<a id="install"></a>
-## Install
-
-### Install the whole repository
+Current scope:
+- 8 personas
+- 1 router skill (`all-personas`)
+- 6 category pages
+- reusable templates for future contributions
 
 ```bash
 git clone https://github.com/pzy2000/Ten-thousand-soul-banners.git
@@ -97,234 +94,17 @@ Using the Codex local skills directory as an example:
 cp -R skills/all-personas ~/.codex/skills/all-personas
 ```
 
-You can then trigger it directly with prompts like:
+Role skills are now split into two root-level folders: `sovereign_skills/` for Power Figures and `soulbanner_skills/` for the rest. The router skill remains in `skills/all-personas`.
 
-```text
-> List every persona in Ten Thousand Soul Banners
-> Who is best for analyzing this problem?
-> Switch to Changshu Arno mode
-> Look at this from the Power Figures angle
-> Let Trump and Musk each say one sentence
-```
-
-### Install a single persona skill
-
-```bash
-cp -R skills/tong-jincheng ~/.codex/skills/tong-jincheng
-```
-
-After activation, you can ask directly:
-
-```text
-> Look at this relationship from Tong Jincheng's perspective
-> Switch to Hanli mode and analyze whether I should take this risk
-> Say something absurd in Changshu Arno's voice
-> From Yann LeCun's perspective, why are LLMs still not enough?
-```
-
-If you use another client that supports `SKILL.md`, you can also import the corresponding persona directory directly.
-
----
-
-<a id="what-gets-distilled"></a>
-## What Gets Distilled
-
-Ten Thousand Soul Banners.Skill is not a single-persona repository. It is a multi-persona Skill monorepo. The current first release includes:
-
-| Module | Contents |
-|------|------|
-| **Router** | `all-personas`, responsible for listing personas, category browsing, recommendations, switching, and multi-persona comparisons |
-| **Current personas** | Changshu Arno, Liangzi, Tong Jincheng, Trump, Musk, Yu Dazui, Hanli, Yann LeCun |
-| **Category system** | `Power Figures (renhuang-flag)`, `abstract-flag`, `jianghu-flag`, `business-flag`, `fiction-flag`, `research-flag` |
-| **Research structure** | Every persona includes `SKILL.md`, `README.md`, and the six-file `references/research/` set |
-| **Extension mechanism** | `CONTRIBUTING.md`, PR template, issue templates, and the template directory |
-
-What this repository distills is not "what famous lines someone once said", but these things:
-
-* stable expressive style
-* core cognitive framework
-* decision heuristics
-* expressive DNA
-* persona tension
-* usage boundaries
-
-In one sentence: **quotes tell you what they once said; Ten Thousand Soul Banners.Skill tries to make "how they would judge" callable.**
-
----
-
-## Current Personas
-
-| Persona | Positioning | Category |
-|------|------|------|
-| **Changshu Arno** | absurdist sincerity, promise-speak, pseudo-proverb energy | `abstract-flag` |
-| **Liangzi** | grassroots mukbang persona, raw physicality, strong survival instinct | `jianghu-flag` |
-| **Tong Jincheng** | relationship guru persona, emotional judgment, anti-cliche advice | `jianghu-flag` |
-| **Trump** | strong narrative control, confrontation, absolutist language | `renhuang-flag` |
-| **Musk** | first principles, engineering obsession, vision-driven execution | `renhuang-flag` |
-| **Yu Dazui** | launch-event pressure, business-war energy, tech sales rhetoric | `business-flag` |
-| **Hanli** | fictional character, cautious survival, move only after planning | `fiction-flag` |
-| **Yann LeCun** | research trajectory, world models, self-supervised learning, anti-hype | `research-flag` |
-
-Full index: [PEOPLE.md](PEOPLE.md).
-
----
-
-<a id="naming"></a>
-## Naming
-
-### Why is it called "Ten Thousand Soul Banners"?
-
-"Ten Thousand Soul Banners" is the repository's worldbuilding wrapper name for a multi-persona `.skill` collection. Here, "souls" is a playful way to refer to persona styles, expression templates, and narrative shells.
-
-It can only be understood as:
-
-* cyber-persona distillation
-* derivative digital doubles
-* a set of callable persona modules
-
-It must not be understood as:
-
-* literal spirit summoning
-* literal immortality
-* the real resurrection of any person
-
-### Why is there a "Power Figures" category?
-
-"Power Figures" is an internal tongue-in-cheek label for personas that project strong will, strong output, strong personal branding, and strong dominance inside public narratives.
-
-This label:
-
-* does not rank real-world capability
-* does not imply genetic or human superiority
-* does not make a real-world value judgment
-* does not endorse any political position
-
-At the moment, `Power Figures` only contains:
-
-* `trump`
-* `musk`
-
----
-
-## Browse by Category
-
-* [Power Figures](categories/renhuang-flag.md)
-* [abstract-flag](categories/abstract-flag.md)
-* [jianghu-flag](categories/jianghu-flag.md)
-* [business-flag](categories/business-flag.md)
-* [fiction-flag](categories/fiction-flag.md)
-* [research-flag](categories/research-flag.md)
-
-A persona can appear on multiple category pages, but only one physical directory is kept in the repository.
-
----
-
-## Sources and Research Structure
-
-This repository allows any public material, but each persona must make the distillation process as transparent as possible.
-
-Every persona directory follows the same structure:
-
-```text
-<persona>/
-├── SKILL.md
-├── README.md
-└── references/
-    └── research/
-        ├── 01-writings.md
-        ├── 02-conversations.md
-        ├── 03-expression-dna.md
-        ├── 04-external-views.md
-        ├── 05-decisions.md
-        └── 06-timeline.md
-```
-
-These six research files are used to organize:
-
-* core expression and writing patterns
-* long-form conversations and interaction modes
-* expressive DNA
-* outside perspectives and controversies
-* decision-making style
-* persona formation timeline
-
----
-
-<a id="honest-boundaries"></a>
-## Honest Boundaries
-
-**What this repository can do:**
-
-* build personas from stable styles found in public material
-* simulate expressive rhythm, judgment frameworks, and narrative tension
-* provide analytical viewpoints with distinct persona differences
-* place multiple personas side by side on the same question
-
-**What this repository cannot do:**
-
-| Dimension | Explanation |
-|------|------|
-| Replace the real person | These skills are not the real person, and they do not copy anyone's private personality or current state |
-| Guarantee recency | Persona answers do not equal the latest facts and should never replace online verification |
-| Enable legitimate impersonation | They must not be used for impersonation, fraud, misleading behavior, political deception, or other deceptive scenarios |
-| Answer everything forcefully | When the source material is thin, the skill should admit limits instead of acting through it |
-| Create a real ranking system | "Ten Thousand Soul Banners" and "Power Figures" are playful labels, not real-world rankings or endorsements |
-
-**A Skill repository that does not tell you where its boundaries are is not worth trusting.**
-
----
-
-## Community Expansion
-
-More personas are welcome in the future, but every addition must:
-
-* follow the shared template
-* complete the six research files
-* state honest boundaries clearly
-* declare category placement
-* avoid presenting derivative personas as "real resurrection"
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution rules.
-
-PR template: [.github/pull_request_template.md](.github/pull_request_template.md).
-
----
-
-## Repository Structure
-
-```text
-Ten-thousand-soul-banners/
-├── README.md
-├── LICENSE
-├── CONTRIBUTING.md
-├── PEOPLE.md
-├── categories/
-│   ├── renhuang-flag.md
-│   ├── abstract-flag.md
-│   ├── jianghu-flag.md
-│   ├── business-flag.md
-│   ├── fiction-flag.md
-│   └── research-flag.md
-├── skills/
-│   ├── all-personas/
-│   ├── changshu-arno/
-│   ├── liangzi/
-│   ├── tong-jincheng/
-│   ├── trump/
-│   ├── musk/
-│   ├── yu-dazui/
-│   ├── hanli/
-│   └── yann-lecun/
-├── templates/
-│   └── research/
-└── .github/
-```
-
----
-
-## License
-
-MIT.
+## Included personas
+- Changshu Arno
+- Liangzi
+- Tong Jincheng
+- Trump
+- Musk
+- Yu Dazui
+- Hanli
+- Yann LeCun
 
 ---
 
