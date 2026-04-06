@@ -11,6 +11,11 @@
 
 <br>
 
+<img src="Overview.png" alt="万魂幡.Skill 概览海报" width="460">
+
+<br>
+<br>
+
 **一个把公众人物、网络人物、虚构角色蒸馏成 `.skill` 的多人仓库。**
 
 <br>
