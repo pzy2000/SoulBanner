@@ -47,6 +47,7 @@
 * `musk`
 * `yu-dazui`
 * `hanli`
+* `yann-lecun`
 
 ## 分类入口
 
@@ -55,6 +56,7 @@
 * `jianghu-flag`
 * `business-flag`
 * `fiction-flag`
+* `research-flag`
 
 ## 诚实边界
 

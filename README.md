@@ -5,8 +5,8 @@
 > *「万魂幡起，收尽人间百相；人皇旗展，唤来众声归位。」*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-![Monorepo](https://img.shields.io/badge/monorepo-7%20personas%20%2B%201%20router-black)
-![Categories](https://img.shields.io/badge/categories-5-blue)
+![Monorepo](https://img.shields.io/badge/monorepo-8%20personas%20%2B%201%20router-black)
+![Categories](https://img.shields.io/badge/categories-6-blue)
 ![Style](https://img.shields.io/badge/style-%E4%BA%8C%E5%88%9B%20%2F%20%E6%95%B4%E6%B4%BB-orange)
 
 **语言 / Languages**：**中文** · [English](README.en.md) · [Español](README.es.md) · [日本語](README.ja.md) · [한국어](README.ko.md)
@@ -22,7 +22,7 @@
 
 <br>
 
-7 个首批角色，1 个总 Skill 入口，5 个分类页，1 套可继续提 PR 的模板系统。<br>
+8 个角色，1 个总 Skill 入口，6 个分类页，1 套可继续提 PR 的模板系统。<br>
 不是复读语录，不是数字永生，而是把公开素材里的稳定风格、判断框架和叙事张力，做成可调用模块。
 
 [看效果](#效果示例) · [安装](#安装) · [蒸馏了什么](#万魂幡蒸馏了什么) · [命名解释](#命名解释) · [诚实边界](#诚实边界)
@@ -116,6 +116,7 @@ cp -R skills/tong-jincheng ~/.codex/skills/tong-jincheng
 > 用童锦程的视角看这段关系
 > 切到韩立模式，分析我要不要冒险
 > 用常熟阿诺的口气说一句抽象的话
+> 用Yann LeCun的视角看，LLM 为什么还不够
 ```
 
 如果你使用的是其他支持 `SKILL.md` 的客户端，也可以直接导入对应人物目录。
@@ -129,8 +130,8 @@ cp -R skills/tong-jincheng ~/.codex/skills/tong-jincheng
 | 模块 | 内容 |
 |------|------|
 | **总入口** | `all-personas`，负责列人、分类浏览、角色推荐、切换与多角色对照 |
-| **首批角色** | 常熟阿诺、良子、童锦程、特朗普、马斯克、余大嘴、韩立 |
-| **分类体系** | `人皇旗（Power Figures）`、`abstract-flag`、`jianghu-flag`、`business-flag`、`fiction-flag` |
+| **当前角色** | 常熟阿诺、良子、童锦程、特朗普、马斯克、余大嘴、韩立、Yann LeCun |
+| **分类体系** | `人皇旗（Power Figures）`、`abstract-flag`、`jianghu-flag`、`business-flag`、`fiction-flag`、`research-flag` |
 | **研究结构** | 每个角色都有 `SKILL.md`、`README.md` 和 `references/research/` 六件套 |
 | **扩展机制** | `CONTRIBUTING.md`、PR 模板、Issue 模板、模板目录 |
 
@@ -147,7 +148,7 @@ cp -R skills/tong-jincheng ~/.codex/skills/tong-jincheng
 
 ---
 
-## 首批角色
+## 当前角色
 
 | 角色 | 定位 | 分类 |
 |------|------|------|
@@ -158,6 +159,7 @@ cp -R skills/tong-jincheng ~/.codex/skills/tong-jincheng
 | **马斯克** | 第一性原理、工程执念、愿景推进 | `renhuang-flag` |
 | **余大嘴** | 发布会压强、商战感、技术话术 | `business-flag` |
 | **韩立** | 虚构角色，谨慎求生、谋定后动 | `fiction-flag` |
+| **Yann LeCun** | 研究路线、世界模型、自监督学习、反 hype | `research-flag` |
 
 完整索引见 [PEOPLE.md](PEOPLE.md)。
 
@@ -206,6 +208,7 @@ cp -R skills/tong-jincheng ~/.codex/skills/tong-jincheng
 * [jianghu-flag](categories/jianghu-flag.md)
 * [business-flag](categories/business-flag.md)
 * [fiction-flag](categories/fiction-flag.md)
+* [research-flag](categories/research-flag.md)
 
 一个角色可以同时被索引进多个分类页，但物理目录只保留一份。
 
@@ -294,7 +297,8 @@ Ten-thousand-soul-banners/
 │   ├── abstract-flag.md
 │   ├── jianghu-flag.md
 │   ├── business-flag.md
-│   └── fiction-flag.md
+│   ├── fiction-flag.md
+│   └── research-flag.md
 ├── skills/
 │   ├── all-personas/
 │   ├── changshu-arno/
@@ -303,7 +307,8 @@ Ten-thousand-soul-banners/
 │   ├── trump/
 │   ├── musk/
 │   ├── yu-dazui/
-│   └── hanli/
+│   ├── hanli/
+│   └── yann-lecun/
 ├── templates/
 │   └── research/
 └── .github/
