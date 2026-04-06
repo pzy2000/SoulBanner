@@ -1,12 +1,79 @@
+<div align="center">
+
 # Ten Thousand Soul Banners.Skill
 
-> Distilling public figures, internet personalities, and fictional characters into reusable `.skill` modules.
+> *"When the banner rises, it gathers every public mask; when the flag unfurls, every voice is summoned into place."*
 
-## Language
-[中文](README.md) | **English** | [Español](README.es.md) | [日本語](README.ja.md) | [한국어](README.ko.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![Monorepo](https://img.shields.io/badge/monorepo-8%20personas%20%2B%201%20router-black)
+![Categories](https://img.shields.io/badge/categories-6-blue)
+![Style](https://img.shields.io/badge/style-derivative%20%2F%20playful-orange)
 
-## What this repo is
-This is a multi-persona Skill monorepo.
+**Languages / 语言**: [中文](README.md) · **English** · [Español](README.es.md) · [日本語](README.ja.md) · [한국어](README.ko.md)
+
+<br>
+
+<img src="Overview.png" alt="Ten Thousand Soul Banners.Skill overview poster" width="460">
+
+<br>
+<br>
+
+**A multi-persona repository that distills public figures, internet personalities, and fictional characters into `.skill` modules.**
+
+<br>
+
+8 personas, 1 router skill, 6 category pages, and a template system that can keep growing through PRs.<br>
+This is not about replaying quotes or pretending at digital immortality. It turns stable style, judgment frameworks, and narrative tension from public material into callable modules.
+
+[Examples](#examples) · [Install](#install) · [What Gets Distilled](#what-gets-distilled) · [Naming](#naming) · [Honest Boundaries](#honest-boundaries)
+
+</div>
+
+---
+
+<a id="examples"></a>
+## Examples
+
+```text
+User         ❯ Who is best for analyzing "Should I quit my job and start a company?"
+
+all-personas ❯ If you want the "don't rush, check your fallback first" angle,
+               start with Hanli.
+
+               If you want the "push hard, find the bottleneck, ask what the real constraint is" version,
+               switch to Musk.
+
+               I won't mash personalities together by default.
+               Pick one, and I'll switch cleanly.
+```
+
+```text
+User      ❯ Switch to Hanli mode and tell me whether I should go all in on this opportunity.
+
+Hanli     ❯ This should not be done rashly.
+
+            An opportunity being tempting does not mean it deserves your full stake.
+            Ask yourself two questions first:
+            Can you survive the worst outcome,
+            and if you fail, do you still have a way back?
+
+            If the answer is no to both,
+            then this is not an opportunity,
+            only risk wearing a better name.
+
+            Preserve yourself first, then talk about ambition.
+            Plan before you move, and you can last.
+```
+
+```text
+User      ❯ Let Trump and Musk each say one sentence: "Stop dragging this project out."
+
+Trump     ❯ This is already obvious. Not deciding now is just wasting a winning position.
+            This is not complicated. You've just delayed for too long.
+
+Musk      ❯ Start by finding the real bottleneck.
+            If the goal is valid, delete the non-critical steps and push a test immediately.
+```
 
 Current scope:
 - 8 personas
@@ -14,10 +81,16 @@ Current scope:
 - 6 category pages
 - reusable templates for future contributions
 
-## Quick install
 ```bash
 git clone https://github.com/pzy2000/Ten-thousand-soul-banners.git
 cd Ten-thousand-soul-banners
+```
+
+### Install the router skill
+
+Using the Codex local skills directory as an example:
+
+```bash
 cp -R skills/all-personas ~/.codex/skills/all-personas
 ```
 
@@ -33,17 +106,12 @@ Role skills are now split into two root-level folders: `sovereign_skills/` for P
 - Hanli
 - Yann LeCun
 
-See full index: [PEOPLE.md](PEOPLE.md)
+---
 
-## Honest boundaries
-This project can:
-- simulate stable expression styles and decision frameworks from public material
-- provide differentiated analytical perspectives by persona
+<div align="center">
 
-This project cannot:
-- replace real persons
-- guarantee up-to-date facts
-- be used for impersonation, fraud, or deception
+**Quotes** only tell you what they once said.<br>
+**Ten Thousand Soul Banners.Skill** wants you to call how they would think, judge, and speak.<br><br>
+*Not resurrection. Distillation.*
 
-## Contributing
-Please follow [CONTRIBUTING.md](CONTRIBUTING.md) and templates in `templates/`.
+</div>
