@@ -37,6 +37,7 @@
 * `jianghu-flag`
 * `business-flag`
 * `fiction-flag`
+* `research-flag`
 
 说明：
 
