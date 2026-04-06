@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import Any
 
 from role_skill_generator.models import (
+    ValidationError,
     load_json,
     normalize_persona_bundle,
     normalize_target_profile,
@@ -27,6 +28,13 @@ def plan_queries(target_path: str | Path, output_markdown: str | Path | None = N
     return payload
 
 
+def _clip_one_line(text: str, max_len: int) -> str:
+    single = " ".join(text.split())
+    if len(single) <= max_len:
+        return single
+    return f"{single[: max_len - 1]}…"
+
+
 def collect_sources(
     target_path: str | Path,
     run_dir: str | Path,
@@ -34,6 +42,7 @@ def collect_sources(
     provider_name: str = "duckduckgo-html",
     max_results: int = 5,
     max_documents: int = 12,
+    verbose: bool = True,
 ) -> dict[str, Any]:
     run_path = Path(run_dir)
     run_path.mkdir(parents=True, exist_ok=True)
@@ -51,6 +60,14 @@ def collect_sources(
     for group in query_pack:
         for query in group["queries"]:
             results = provider.search(query, max_results=max_results)
+            if verbose:
+                print(
+                    f"\n[检索] [{group['name']}] provider={provider_name} q={query!r} → {len(results)} 条",
+                )
+                for idx, item in enumerate(results, start=1):
+                    print(f"  {idx}. {item.title}")
+                    print(f"     url: {item.url}")
+                    print(f"     snippet: {_clip_one_line(item.snippet, 280)}")
             for item in results:
                 row = {
                     "group": group["name"],
@@ -71,7 +88,13 @@ def collect_sources(
             break
         url = result["url"]
         if any(existing["url"] == url for existing in documents):
+            if verbose:
+                print(f"\n[抓取] 跳过重复 URL: {url}")
             continue
+        if verbose:
+            print(
+                f"\n[抓取] ({len(documents) + 1}/{max_documents}) [{result['group']}] {url}",
+            )
         try:
             document = fetch_document(url)
         except Exception as exc:  # noqa: BLE001
@@ -80,6 +103,15 @@ def collect_sources(
                 "title": result["title"],
                 "content": f"抓取失败：{exc}",
             }
+        if verbose:
+            content = document.get("content", "")
+            status = "失败" if content.startswith("抓取失败：") else "成功"
+            print(f"  状态: {status}")
+            print(f"  标题: {document.get('title', '')}")
+            if status == "成功":
+                print(f"  正文预览 ({len(content)} 字): {_clip_one_line(content, 420)}")
+            else:
+                print(f"  {content}")
         documents.append(
             {
                 **document,
@@ -120,7 +152,19 @@ def synthesize_bundle(
     user_prompt = _build_synthesis_prompt(target, documents)
     raw_bundle = client.generate_json(system_prompt, user_prompt)
     merged = {**target, **raw_bundle}
-    normalized = normalize_persona_bundle(merged)
+    try:
+        normalized = normalize_persona_bundle(merged)
+    except ValidationError as exc:
+        print(f"ValidationError: {exc}")
+        repair_prompt = (
+            user_prompt
+            + "\n\n上次输出的 JSON 未通过校验，请只输出修正后的完整 JSON object，不要解释：\n"
+            + str(exc)
+        )
+        print(repair_prompt)
+        raw_bundle = client.generate_json(system_prompt, repair_prompt)
+        merged = {**target, **raw_bundle}
+        normalized = normalize_persona_bundle(merged)
     write_json(output_bundle_path, normalized)
     return normalized
 
@@ -142,6 +186,7 @@ def generate_persona_materials(
     max_results: int = 5,
     max_documents: int = 12,
     model: str | None = None,
+    verbose_collect: bool = True,
 ) -> Path:
     collected = collect_sources(
         target_path,
@@ -149,6 +194,7 @@ def generate_persona_materials(
         provider_name=provider_name,
         max_results=max_results,
         max_documents=max_documents,
+        verbose=verbose_collect,
     )
     bundle_path = Path(run_dir) / "persona.bundle.json"
     synthesize_bundle(
@@ -202,8 +248,13 @@ def _build_synthesis_prompt(target: dict[str, Any], documents: list[dict[str, An
             "catchphrases": ["口头禅 1"],
             "signature_moves": ["标志性表达动作 1"],
         },
-        "cognitive_frames": ["核心认知框架 1"],
-        "decision_heuristics": ["决策启发式 1"],
+        "cognitive_frames": ["核心认知框架 1", "核心认知框架 2", "核心认知框架 3"],
+        "decision_heuristics": [
+            "决策启发式 1",
+            "决策启发式 2",
+            "决策启发式 3",
+            "决策启发式 4",
+        ],
         "expression_dna": {
             "opening": "开场方式",
             "transition": "转折方式",
@@ -218,8 +269,8 @@ def _build_synthesis_prompt(target: dict[str, Any], documents: list[dict[str, An
             "exaggeration": "最容易被二创放大的点",
         },
         "boundaries": {
-            "can_answer": ["能回答什么 1"],
-            "cannot_answer": ["不能回答什么 1"],
+            "can_answer": ["能回答什么 1", "能回答什么 2"],
+            "cannot_answer": ["不能回答什么 1", "不能回答什么 2"],
             "weak_domains": ["素材不足领域 1"],
             "disclaimer": "这是基于公开素材蒸馏出的二创人格，不替代本人。",
         },
@@ -227,9 +278,9 @@ def _build_synthesis_prompt(target: dict[str, Any], documents: list[dict[str, An
         "readme": {
             "intro": "README 一句话介绍",
             "why_worth": "为什么值得蒸馏",
-            "distilled_points": ["蒸馏点 1"],
-            "fit_questions": ["适合回答的问题 1"],
-            "sample_questions": ["示例问题 1"],
+            "distilled_points": ["蒸馏点 1", "蒸馏点 2", "蒸馏点 3"],
+            "fit_questions": ["适合回答的问题 1", "适合回答的问题 2", "适合回答的问题 3"],
+            "sample_questions": ["示例问题 1", "示例问题 2"],
             "about": "人物类型、收录理由与分类归属",
         },
         "research": {
@@ -284,6 +335,10 @@ def _build_synthesis_prompt(target: dict[str, Any], documents: list[dict[str, An
             "3. 所有最终文案都写中文，风格要贴近当前仓库现有角色文档。",
             "4. 不要自称真实复活，不要冒充本人，不要编造私密信息。",
             "5. sample_dialogues 至少给两组。",
+            "6. 下列数组必须满足最少项数（与校验一致）："
+            "user_scenarios≥3；cognitive_frames≥3；decision_heuristics≥4；"
+            "boundaries.can_answer 与 boundaries.cannot_answer 各≥2；"
+            "readme.distilled_points 与 readme.fit_questions 各≥3；readme.sample_questions≥2。",
             "",
             "target_profile:",
             json.dumps(target, ensure_ascii=False, indent=2),

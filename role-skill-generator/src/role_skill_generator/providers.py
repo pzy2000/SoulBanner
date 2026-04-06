@@ -4,8 +4,11 @@ import html
 import json
 import os
 import re
+import threading
+import time
 from dataclasses import dataclass
 from typing import Any
+from urllib.error import HTTPError as UrllibHTTPError
 from urllib.parse import parse_qs, quote_plus, unquote, urlparse
 from urllib.request import Request, urlopen
 
@@ -26,12 +29,31 @@ class HTTPError(RuntimeError):
     pass
 
 
+_DEFAULT_HTTP_TIMEOUT = 30.0
+_LLM_CHAT_TIMEOUT_DEFAULT = 600.0
+_RESEARCH_WAIT_HEARTBEAT_SEC = 5.0
+
+
+def _llm_chat_timeout_seconds() -> float:
+    raw = os.getenv("ROLE_SKILL_OPENAI_TIMEOUT")
+    if raw is None or str(raw).strip() == "":
+        return _LLM_CHAT_TIMEOUT_DEFAULT
+    try:
+        return float(raw)
+    except ValueError as exc:
+        raise HTTPError(
+            f"ROLE_SKILL_OPENAI_TIMEOUT 必须是数字（秒），当前为 {raw!r}。"
+        ) from exc
+
+
 def _request_json(
     url: str,
     *,
     method: str = "GET",
     headers: dict[str, str] | None = None,
     payload: dict[str, Any] | None = None,
+    timeout: float = _DEFAULT_HTTP_TIMEOUT,
+    research_wait_progress: bool = False,
 ) -> dict[str, Any]:
     request_headers = {"User-Agent": USER_AGENT, **(headers or {})}
     data = None
@@ -39,9 +61,36 @@ def _request_json(
         data = json.dumps(payload).encode("utf-8")
         request_headers["Content-Type"] = "application/json"
     request = Request(url, method=method, headers=request_headers, data=data)
-    with urlopen(request, timeout=30) as response:
-        body = response.read().decode("utf-8")
-    return json.loads(body)
+    done = threading.Event()
+
+    def _heartbeat() -> None:
+        start = time.monotonic()
+        while not done.wait(_RESEARCH_WAIT_HEARTBEAT_SEC):
+            elapsed = int(time.monotonic() - start)
+            print(f"Already researched for {elapsed} seconds...", flush=True)
+
+    thread: threading.Thread | None = None
+    if research_wait_progress:
+        thread = threading.Thread(target=_heartbeat, daemon=True)
+        thread.start()
+    try:
+        try:
+            with urlopen(request, timeout=timeout) as response:
+                body = response.read().decode("utf-8")
+        except TimeoutError as exc:
+            raise HTTPError(f"请求在 {timeout:g} 秒内未完成: {url}") from exc
+        except UrllibHTTPError as exc:
+            detail = exc.read().decode("utf-8", errors="replace").strip() or "(empty body)"
+            if len(detail) > 8000:
+                detail = f"{detail[:8000]}…"
+            raise HTTPError(
+                f"请求 {url} 失败: HTTP {exc.code} {exc.reason}。服务端响应: {detail}"
+            ) from exc
+        return json.loads(body)
+    finally:
+        done.set()
+        if thread is not None:
+            thread.join(timeout=1.0)
 
 
 def _request_text(
@@ -212,20 +261,33 @@ class OpenAICompatibleClient:
             raise HTTPError("缺少 ROLE_SKILL_OPENAI_API_KEY 或 OPENAI_API_KEY。")
 
     def generate_json(self, system_prompt: str, user_prompt: str) -> dict[str, Any]:
+        payload: dict[str, Any] = {
+            "model": self.model,
+            "messages": [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
+            ],
+            "response_format": {"type": "json_object"},
+        }
+        temp_raw = os.getenv("ROLE_SKILL_OPENAI_TEMPERATURE")
+        if temp_raw is not None and str(temp_raw).strip() != "":
+            try:
+                payload["temperature"] = float(temp_raw)
+            except ValueError as exc:
+                raise HTTPError(
+                    f"ROLE_SKILL_OPENAI_TEMPERATURE 必须是数字，当前为 {temp_raw!r}。"
+                ) from exc
+
         data = _request_json(
             f"{self.base_url}/chat/completions",
             method="POST",
             headers={"Authorization": f"Bearer {self.api_key}"},
-            payload={
-                "model": self.model,
-                "temperature": 0.2,
-                "messages": [
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": user_prompt},
-                ],
-                "response_format": {"type": "json_object"},
-            },
+            payload=payload,
+            timeout=_llm_chat_timeout_seconds(),
+            research_wait_progress=True,
         )
+        if isinstance(data, dict) and data.get("success") is False:
+            raise HTTPError(f"聊天接口返回错误: {data}")
         try:
             content = data["choices"][0]["message"]["content"]
         except (KeyError, IndexError) as exc:

@@ -29,6 +29,12 @@ def build_parser() -> argparse.ArgumentParser:
     collect_cmd.add_argument("--provider", default="duckduckgo-html", help="duckduckgo-html | tavily | serper")
     collect_cmd.add_argument("--max-results", type=int, default=5)
     collect_cmd.add_argument("--max-documents", type=int, default=12)
+    collect_cmd.add_argument(
+        "-q",
+        "--quiet",
+        action="store_true",
+        help="不打印每条检索与抓取的详细日志（默认会打印）。",
+    )
 
     synth_cmd = subparsers.add_parser("synthesize", help="把 documents.jsonl 合成为 persona bundle。")
     synth_cmd.add_argument("target", help="target profile JSON")
@@ -48,6 +54,12 @@ def build_parser() -> argparse.ArgumentParser:
     generate_cmd.add_argument("--max-results", type=int, default=5)
     generate_cmd.add_argument("--max-documents", type=int, default=12)
     generate_cmd.add_argument("--model", help="OpenAI-compatible model name")
+    generate_cmd.add_argument(
+        "-q",
+        "--quiet",
+        action="store_true",
+        help="不打印每条检索与抓取的详细日志（默认会打印）。",
+    )
 
     return parser
 
@@ -68,6 +80,7 @@ def main() -> None:
             provider_name=args.provider,
             max_results=args.max_results,
             max_documents=args.max_documents,
+            verbose=not args.quiet,
         )
         print(
             f"collected {len(payload['search_results'])} search hits and "
@@ -99,6 +112,7 @@ def main() -> None:
             max_results=args.max_results,
             max_documents=args.max_documents,
             model=args.model,
+            verbose_collect=not args.quiet,
         )
         print(f"generated {persona_dir}")
         return
