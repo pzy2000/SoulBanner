@@ -9,9 +9,9 @@
 Es un monorepo de Skills con múltiples personas.
 
 Alcance actual:
-- 7 personas
+- 8 personas
 - 1 skill enrutador (`all-personas`)
-- 5 páginas de categorías
+- 6 páginas de categorías
 - plantillas reutilizables para futuras contribuciones
 
 ## Instalación rápida
@@ -21,6 +21,8 @@ cd Ten-thousand-soul-banners
 cp -R skills/all-personas ~/.codex/skills/all-personas
 ```
 
+Los skills de personajes ahora se dividen en dos carpetas de nivel raíz: `sovereign_skills/` para Power Figures y `soulbanner_skills/` para el resto. El skill enrutador sigue en `skills/all-personas`.
+
 ## Personas incluidas
 - Changshu Arno
 - Liangzi
@@ -29,6 +31,7 @@ cp -R skills/all-personas ~/.codex/skills/all-personas
 - Musk
 - Yu Dazui
 - Hanli
+- Yann LeCun
 
 Índice completo: [PEOPLE.md](PEOPLE.md)
 

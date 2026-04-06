@@ -4,7 +4,9 @@
 
 ## 如何新增一个人物
 
-1. 在 `skills/` 下创建新目录，目录名使用稳定、可读、便于引用的英文或拼音 kebab-case。
+1. 根据角色归属，在仓库根目录创建人物目录，目录名使用稳定、可读、便于引用的英文或拼音 kebab-case。
+   * `sovereign_skills/<persona>/`：仅用于 `renhuang-flag` 角色
+   * `soulbanner_skills/<persona>/`：用于其余角色
 2. 复制以下模板：
    * `templates/skill.template.md`
    * `templates/persona-readme.template.md`
@@ -12,6 +14,8 @@
 3. 补齐 `SKILL.md`、`README.md` 与 `references/research/` 六个 research 文件。
 4. 在 `PEOPLE.md` 与对应 `categories/*.md` 中登记该人物。
 5. 提交 PR，并按模板补齐风险说明。
+
+说明：`skills/` 目录现在只保留 `all-personas` 这类总入口或基础设施 skill，不再放单角色目录。
 
 ## 必须提供的文件
 
@@ -43,6 +47,8 @@
 
 * 一个角色可以出现在多个分类页
 * 物理目录只保留一份
+* `renhuang-flag` 角色的物理目录放在 `sovereign_skills/`
+* 其他当前分类角色的物理目录放在 `soulbanner_skills/`
 * `人皇旗（Power Figures）` 目前只允许收录特朗普与马斯克
 
 ## 如何写“诚实边界”

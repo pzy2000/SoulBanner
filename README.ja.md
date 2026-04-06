@@ -9,9 +9,9 @@
 複数ペルソナを扱う Skill モノレポです。
 
 現在の構成:
-- 7 ペルソナ
+- 8 ペルソナ
 - 1 つのルーター skill（`all-personas`）
-- 5 つのカテゴリページ
+- 6 つのカテゴリページ
 - 今後の追加に使えるテンプレート
 
 ## クイックインストール
@@ -21,6 +21,8 @@ cd Ten-thousand-soul-banners
 cp -R skills/all-personas ~/.codex/skills/all-personas
 ```
 
+キャラクター skill は現在、ルート直下の 2 つのフォルダに分割されています。`sovereign_skills/` は Power Figures、`soulbanner_skills/` はそれ以外の役割用です。ルーター skill は引き続き `skills/all-personas` にあります。
+
 ## 収録ペルソナ
 - 常熟アーノ
 - 良子
@@ -29,6 +31,7 @@ cp -R skills/all-personas ~/.codex/skills/all-personas
 - マスク
 - 余大嘴
 - 韓立
+- Yann LeCun
 
 一覧: [PEOPLE.md](PEOPLE.md)
 

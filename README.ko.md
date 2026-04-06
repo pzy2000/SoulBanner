@@ -9,9 +9,9 @@
 멀티 페르소나 Skill 모노레포입니다.
 
 현재 구성:
-- 페르소나 7종
+- 페르소나 8종
 - 라우터 skill 1개 (`all-personas`)
-- 카테고리 페이지 5개
+- 카테고리 페이지 6개
 - 확장을 위한 템플릿 세트
 
 ## 빠른 설치
@@ -21,6 +21,8 @@ cd Ten-thousand-soul-banners
 cp -R skills/all-personas ~/.codex/skills/all-personas
 ```
 
+캐릭터 skill 은 이제 루트의 두 폴더로 나뉩니다. `sovereign_skills/` 는 Power Figures, `soulbanner_skills/` 는 그 외 역할용이며, 라우터 skill 은 계속 `skills/all-personas` 에 있습니다.
+
 ## 포함된 페르소나
 - 창수 아누오
 - 량쯔
@@ -29,6 +31,7 @@ cp -R skills/all-personas ~/.codex/skills/all-personas
 - 머스크
 - 위다쭈이
 - 한리
+- Yann LeCun
 
 전체 목록: [PEOPLE.md](PEOPLE.md)
 

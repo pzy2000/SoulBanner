@@ -9,9 +9,9 @@
 This is a multi-persona Skill monorepo.
 
 Current scope:
-- 7 personas
+- 8 personas
 - 1 router skill (`all-personas`)
-- 5 category pages
+- 6 category pages
 - reusable templates for future contributions
 
 ## Quick install
@@ -21,6 +21,8 @@ cd Ten-thousand-soul-banners
 cp -R skills/all-personas ~/.codex/skills/all-personas
 ```
 
+Role skills are now split into two root-level folders: `sovereign_skills/` for Power Figures and `soulbanner_skills/` for the rest. The router skill remains in `skills/all-personas`.
+
 ## Included personas
 - Changshu Arno
 - Liangzi
@@ -29,6 +31,7 @@ cp -R skills/all-personas ~/.codex/skills/all-personas
 - Musk
 - Yu Dazui
 - Hanli
+- Yann LeCun
 
 See full index: [PEOPLE.md](PEOPLE.md)
 
