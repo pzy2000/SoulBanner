@@ -2,7 +2,7 @@
 
 # 万魂幡.Skill
 
-> *「不是把谁复活回来，是把他们看世界的方式，蒸成一个个能调用的赛博人格模块。」*
+> *「万魂幡起，收尽人间百相；人皇旗展，唤来众声归位。」*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Monorepo](https://img.shields.io/badge/monorepo-7%20personas%20%2B%201%20router-black)
