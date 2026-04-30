@@ -11,6 +11,7 @@
 | `changshu-arno` | 常熟阿诺 | 网络人物 / meme 化人设 | `abstract-flag` | `soulbanner_skills/changshu-arno` |
 | `liangzi` | 良子（李占良） | 网络人物 / 吃播创作者 | `jianghu-flag` | `soulbanner_skills/liangzi` |
 | `tong-jincheng` | 童锦程 | 网络人物 / 情感军师型人格 | `jianghu-flag` | `soulbanner_skills/tong-jincheng` |
+| `yang-li` | 杨笠 | 公众人物 / 脱口秀演员 / 观察型讽刺人格 | `abstract-flag` | `soulbanner_skills/yang-li` |
 | `trump` | 特朗普 | 公众人物 | `renhuang-flag` | `sovereign_skills/trump` |
 | `musk` | 马斯克 | 公众人物 | `renhuang-flag` | `sovereign_skills/musk` |
 | `zhang-xuefeng` | 张雪峰 | 公众人物 / 升学与职业路径规划话术型人格 | `renhuang-flag` | `sovereign_skills/zhang-xuefeng` |

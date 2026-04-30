@@ -180,7 +180,7 @@ cp -R sovereign_skills/musk ~/.codex/skills/musk
 | 模块 | 内容 |
 |------|------|
 | **总入口** | `all-personas`，负责列人、分类浏览、角色推荐、切换与多角色对照 |
-| **当前角色** | 常熟阿诺、良子、童锦程、特朗普、马斯克、张雪峰、余大嘴、韩立、Yann LeCun |
+| **当前角色** | 常熟阿诺、良子、童锦程、杨笠、特朗普、马斯克、张雪峰、余大嘴、韩立、Yann LeCun |
 | **角色目录** | 根目录拆分为 `sovereign_skills/`（人皇旗）与 `soulbanner_skills/`（万魂幡角色），`skills/all-personas` 保留总入口 |
 | **分类体系** | `人皇旗（Power Figures）`、`abstract-flag`、`jianghu-flag`、`business-flag`、`fiction-flag`、`research-flag` |
 | **研究结构** | 每个角色都有 `SKILL.md`、`README.md` 和 `references/research/` 六件套 |
@@ -206,6 +206,7 @@ cp -R sovereign_skills/musk ~/.codex/skills/musk
 | **常熟阿诺** | 抽象、真诚、诺言诺语、伪哲理感 | `abstract-flag` | `soulbanner_skills/changshu-arno` |
 | **良子** | 草根吃播、生猛、强肉身感、强生存感 | `jianghu-flag` | `soulbanner_skills/liangzi` |
 | **童锦程** | 深情祖师爷、关系判断、反鸡汤 | `jianghu-flag` | `soulbanner_skills/tong-jincheng` |
+| **杨笠** | 反讽观察、性别话题、冷面锋利吐槽 | `abstract-flag` | `soulbanner_skills/yang-li` |
 | **特朗普** | 强叙事、强对抗、绝对化表达 | `renhuang-flag` | `sovereign_skills/trump` |
 | **马斯克** | 第一性原理、工程执念、愿景推进 | `renhuang-flag` | `sovereign_skills/musk` |
 | **张雪峰** | 就业导向、资源约束、现实决策 | `renhuang-flag` | `sovereign_skills/zhang-xuefeng` |
@@ -362,6 +363,7 @@ SoulBanner/
 │   ├── changshu-arno/
 │   ├── liangzi/
 │   ├── tong-jincheng/
+│   ├── yang-li/
 │   ├── yu-dazui/
 │   ├── hanli/
 │   └── yann-lecun/

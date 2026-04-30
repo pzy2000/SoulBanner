@@ -145,6 +145,7 @@ Los skills de personajes ahora se dividen en dos carpetas de nivel raíz: `sover
 - Changshu Arno
 - Liangzi
 - Tong Jincheng
+- Yang Li
 - Trump
 - Musk
 - Zhang Xuefeng

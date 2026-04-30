@@ -146,6 +146,7 @@ cp -R skills/all-personas ~/.codex/skills/all-personas
 - 常熟アーノ
 - 良子
 - 童錦程
+- 楊笠
 - トランプ
 - マスク
 - 張雪峰
@@ -162,6 +163,7 @@ cp -R skills/all-personas ~/.codex/skills/all-personas
 | **Changshu Arno** | 抽象ミーム、妙な誠実さ、約束口調、偽ことわざ感 | `abstract-flag` |
 | **Liangzi** | 庶民派の食べ配信、むき出しの肉体感、強い生存感覚 | `jianghu-flag` |
 | **Tong Jincheng** | 恋愛軍師系、関係判断、反・定番説教 | `jianghu-flag` |
+| **Yang Li** | 反語的観察、ジェンダー話題、冷静で鋭いツッコミ | `abstract-flag` |
 | **Trump** | 強い物語化、強い対立性、断定口調 | `renhuang-flag` |
 | **Musk** | 第一原理、工学への執着、ビジョン駆動の推進 | `renhuang-flag` |
 | **Zhang Xuefeng** | 就職志向、資源制約、現実的な進路判断 | `renhuang-flag` |
@@ -320,6 +322,7 @@ SoulBanner/
 │   ├── changshu-arno/
 │   ├── liangzi/
 │   ├── tong-jincheng/
+│   ├── yang-li/
 │   ├── yu-dazui/
 │   ├── hanli/
 │   └── yann-lecun/

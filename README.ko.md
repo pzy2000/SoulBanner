@@ -146,6 +146,7 @@ cp -R skills/all-personas ~/.codex/skills/all-personas
 - 창수 아누오
 - 량쯔
 - 퉁진청
+- 양리
 - 트럼프
 - 머스크
 - 장쉐펑
@@ -162,6 +163,7 @@ cp -R skills/all-personas ~/.codex/skills/all-personas
 | **Changshu Arno** | 추상 밈, 묘한 진정성, 약속 말투, 가짜 격언 감성 | `abstract-flag` |
 | **Liangzi** | 서민형 먹방 캐릭터, 거친 육체감, 강한 생존 감각 | `jianghu-flag` |
 | **Tong Jincheng** | 연애 군사형 캐릭터, 관계 판단, 반-치유형 조언 | `jianghu-flag` |
+| **Yang Li** | 반어적 관찰, 젠더 화제, 차갑고 날카로운 한방 | `abstract-flag` |
 | **Trump** | 강한 서사 장악, 강한 대립성, 절대화된 표현 | `renhuang-flag` |
 | **Musk** | 제1원리, 엔지니어링 집착, 비전 중심 추진력 | `renhuang-flag` |
 | **Zhang Xuefeng** | 취업 지향, 자원 제약, 현실적인 진로 판단 | `renhuang-flag` |
@@ -320,6 +322,7 @@ SoulBanner/
 │   ├── changshu-arno/
 │   ├── liangzi/
 │   ├── tong-jincheng/
+│   ├── yang-li/
 │   ├── yu-dazui/
 │   ├── hanli/
 │   └── yann-lecun/
